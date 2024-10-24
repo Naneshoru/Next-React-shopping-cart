@@ -18,11 +18,11 @@ export default function Header () {
           </Link>
         </div>
         <div className='flex items-center gap-2'>
-          <ModeToggle />
-
           <NavButton href='/tickets' label='Tickets' icon={File} />
 
           <NavButton href='/customers' label='Customers' icon={UsersRound} />
+
+          <ModeToggle />
         </div>
       </div>
   </header>  
