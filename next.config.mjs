@@ -2,11 +2,7 @@
 
 import { withSentryConfig } from '@sentry/nextjs';
 
-const nextConfig = {
-  // experimental: {
-  //   instrumentationHook: true
-  // },
-}
+const nextConfig = {}
 
 export default withSentryConfig(nextConfig, {
   org: "ricardo-atakiama",

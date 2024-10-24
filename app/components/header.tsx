@@ -2,12 +2,12 @@
 
 import { File, HomeIcon, UsersRound } from 'lucide-react';
 import React from 'react';
-import { NavButton } from './navbutton';
+import { NavButton } from '@app/components/navbutton';
 import Link from 'next/link';
-import { ModeToggle } from './ui/mode-toggle';
+import { ModeToggle } from '@app/components/ui/mode-toggle';
  
 export default function Header () {
-  return (
+  return ( 
     <header className='bg-background h-12 p-2 border-b sticky top-0 z-20'>
       <div className='animate-slide flex h-8 items-center justify-between w-full'>
         <div className='flex items-center gap-2'>

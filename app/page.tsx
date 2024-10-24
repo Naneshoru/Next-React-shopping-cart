@@ -1,6 +1,6 @@
 import BusinessCard from "./components/business-card";
 import Link from "next/link";
-import Header from "./components/header";
+import Header from "@app/components/header";
 
 export default function Home() {
   return (

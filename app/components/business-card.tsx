@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react';
-import Loading from '../loading';
+import Loading from '@app/loading';
 
 export default function BusinessCard ({ children }: { children: React.ReactNode }) {
   const { resolvedTheme } = useTheme();
