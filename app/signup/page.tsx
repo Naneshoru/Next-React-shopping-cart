@@ -13,8 +13,22 @@ type FormValues = {
 
 export default function SignUp() {
 
-  const { register, handleSubmit, formState } = useForm<FormValues>()
+  const { register, handleSubmit, formState } = useForm<FormValues>({
+    // defaultValues: {
+    //   name: '',
+    //   email: '@example.com'
+    // }
+    defaultValues: async () => {
+			const response = await fetch('https://jsonplaceholder.typicode.com/users/1')
+      const data: { email: string } = await response.json()
 
+      return {
+        name: '',
+        email: data.email
+      }
+		}
+  })
+  
   const { errors } = formState
 
   const onSubmit = (data: FormValues) => {
