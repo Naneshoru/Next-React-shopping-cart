@@ -1,6 +1,6 @@
 'use client'
 
-import { File, HomeIcon, UsersRound } from 'lucide-react';
+import { UserPlus, HomeIcon, UsersRound } from 'lucide-react';
 import React from 'react';
 import { NavButton } from '@app/components/navbutton';
 import Link from 'next/link';
@@ -18,7 +18,7 @@ export default function Header () {
           </Link>
         </div>
         <div className='flex items-center gap-2'>
-          <NavButton href='/tickets' label='Tickets' icon={File} />
+          <NavButton href='/signup' label='Sign up' icon={UserPlus} />
 
           <NavButton href='/customers' label='Customers' icon={UsersRound} />
 
