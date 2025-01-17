@@ -13,7 +13,9 @@ type FormValues = {
 
 export default function SignUp() {
 
-  const { register, handleSubmit, getValues } = useForm<FormValues>()
+  const { register, handleSubmit, formState } = useForm<FormValues>()
+
+  const { errors } = formState
 
   const onSubmit = (data: FormValues) => {
     console.log(data)
@@ -25,14 +27,43 @@ export default function SignUp() {
       <form action="" onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <label className={styles.label}>
           Name:
-          <Input id="name" {...register('name')} className="" />
+          <Input id="name" {...register('name', 
+          {       
+            required: {
+              value: true,
+              message: 'Username is required!'
+            },
+          }
+          )} className="" />
         </label>
-        
+        <p className={styles.error}>{errors.name?.message}</p>
+
         <label className={styles.label} >
           E-mail: 
-          <Input type="email" id="email" {...register('email')} className={styles.pink} onClick={() => alert(JSON.stringify(getValues())) 
-          }/>
+          <Input type="email" id="email" {...register('email', 
+          {
+            pattern: {
+              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              message: 'Invalid email address',
+            },
+            required: {
+              value: true,
+              message: 'E-mail is required!'
+            },
+            validate: (value) => { 
+              return value !== "admin@example.com" || 'Enter a different email address.'
+            }
+
+            // validate: { 
+            //   notAdmin: (value) => {
+            //     return value !== "admin@example.com" || 'Enter a different  email address.'
+            //   }
+            // }
+          }
+          )} className={styles.pink} />
         </label>
+        <p className={styles.error}>{errors.email?.message}</p>
+        
         <Button>Submit</Button>
       </form>
     </div>
