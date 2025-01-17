@@ -9,6 +9,10 @@ import { Button } from "../components/ui/button"
 type FormValues = {
   name: string
   email: string
+  address: {
+    street: string
+    number: string
+  }
 }
 
 export default function SignUp() {
@@ -16,11 +20,15 @@ export default function SignUp() {
   const { register, handleSubmit, formState } = useForm<FormValues>({
     defaultValues: async () => {
 			const response = await fetch('https://jsonplaceholder.typicode.com/users/1')
-      const data: { email: string } = await response.json()
+      const data: { email: string, address: { street: string, suite: string } } = await response.json()
 
       return {
         name: '',
-        email: data.email
+        email: data.email,
+        address: {
+          street: data.address?.street,
+          number: data.address?.suite
+        }
       }
 		}
   })
@@ -67,7 +75,19 @@ export default function SignUp() {
           )} className={styles.pink} />
         </label>
         <p className={styles.error}>{errors.email?.message}</p>
+
+        <label className={styles.label} >
+          Street: 
+          <Input type="text" id="street" {...register('address.street')} className={styles.pink} />
+        </label>
+        <p className={styles.error}>{errors.address?.street?.message}</p>
         
+        <label className={styles.label} >
+          Number: 
+          <Input type="text" id="number" {...register('address.number')} className={styles.pink} />
+        </label>
+        <p className={styles.error}>{errors.address?.number?.message}</p>
+
         <Button>Submit</Button>
       </form>
     </div>
