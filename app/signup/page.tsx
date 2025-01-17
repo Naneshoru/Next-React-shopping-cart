@@ -14,10 +14,6 @@ type FormValues = {
 export default function SignUp() {
 
   const { register, handleSubmit, formState } = useForm<FormValues>({
-    // defaultValues: {
-    //   name: '',
-    //   email: '@example.com'
-    // }
     defaultValues: async () => {
 			const response = await fetch('https://jsonplaceholder.typicode.com/users/1')
       const data: { email: string } = await response.json()
@@ -28,7 +24,7 @@ export default function SignUp() {
       }
 		}
   })
-  
+
   const { errors } = formState
 
   const onSubmit = (data: FormValues) => {
@@ -67,12 +63,6 @@ export default function SignUp() {
             validate: (value) => { 
               return value !== "admin@example.com" || 'Enter a different email address.'
             }
-
-            // validate: { 
-            //   notAdmin: (value) => {
-            //     return value !== "admin@example.com" || 'Enter a different  email address.'
-            //   }
-            // }
           }
           )} className={styles.pink} />
         </label>
