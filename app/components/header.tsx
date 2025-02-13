@@ -1,12 +1,19 @@
-'use client'
 
-import { UserPlus, HomeIcon, UsersRound } from 'lucide-react';
+
 import React from 'react';
-import { NavButton } from '@app/components/navbutton';
 import Link from 'next/link';
+import { UserPlus, HomeIcon, UsersRound, LogIn } from 'lucide-react';
+import { NavButton } from '@app/components/navbutton';
 import { ModeToggle } from '@app/components/ui/mode-toggle';
+import { getServerSession } from 'next-auth';
+import LogoutBtn from './ui/logout-btn';
  
-export default function Header () {
+export default async function Header () { 
+  const session = await getServerSession() 
+  // console.log("🚀 ~ Header ~ session:", session)
+  const userName = session?.user?.name || ''
+  // console.log("🚀 ~ Header ~ userName:", userName)
+  
   return ( 
     <header className='bg-background h-12 p-2 border-b sticky top-0 z-20'>
       <div className='animate-slide flex h-8 items-center justify-between w-full'>
@@ -18,7 +25,13 @@ export default function Header () {
           </Link>
         </div>
         <div className='flex items-center gap-2'>
+          {session && userName && <p>Olá, {userName}</p>}
+
+          {session && <LogoutBtn />}
+
           <NavButton href='/signup' label='Sign up' icon={UserPlus} />
+
+          {!session && <NavButton href='/signin' label='Sign in' icon={LogIn} />}
 
           <NavButton href='/customers' label='Customers' icon={UsersRound} />
 
