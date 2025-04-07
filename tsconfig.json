@@ -5,6 +5,8 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": ["cypress", "node"],
+    "sourceMap": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -28,7 +30,8 @@
       ],
       "@app/*": [
         "app/*"
-      ]
+      ],
+      "@badeball/cypress-cucumber-preprocessor/*": ["./node_modules/@badeball/cypress-cucumber-preprocessor/dist/subpath-entrypoints/*"]
     },
     "target": "ES2017"
   },
@@ -36,7 +39,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "cypress/e2e/**/*.ts"
   ],
   "exclude": [
     "node_modules"
