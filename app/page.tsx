@@ -1,14 +1,20 @@
 import BusinessCard from "./components/business-card";
 import Link from "next/link";
 import Header from "@app/components/header";
+import PokeData from "./pokedata";
+import { Suspense } from "react";
 
 export default function Home() {
+
   return (
     <div className="bg-black bg-home-image bg-cover bg-center flex flex-col h-dvh">
       <Header />
       <main className="flex flex-col justify-center text-center max-w-5xl mx-auto h-full">
         <BusinessCard >
           <h1 className="text-4xl font-bold">Ricardo&apos;s Shop</h1>
+          <Suspense fallback={<p>Loading local...</p>}>
+            <PokeData />
+          </Suspense>
           <address>
             53 S McDonnell Rd <br/>
             San Francisco, CA 94128, United States

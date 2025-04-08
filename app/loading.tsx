@@ -1,7 +1,7 @@
 export function Loading () {
   return (
     <>
-      <p>Loading...</p>
+      <p>Loading global...</p>
     </>
   )
 };
