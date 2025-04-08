@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "cypress:web": "npx cypress open",
-    "cypress:headless": "npx cypress run --browser electron"
+    "cypress:headless": "npx cypress run --browser electron",
+    "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:headless"
   },
   "engines": {
     "node": "22.0.0"
@@ -45,6 +46,7 @@
     "eslint": "^8",
     "eslint-config-next": "15.1.4",
     "postcss": "^8",
+    "start-server-and-test": "^2.0.11",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
