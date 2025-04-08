@@ -1,8 +1,6 @@
 name: Continous Integration
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -16,11 +14,18 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 18.
-      - name: Install Build and Test dependencies
+
+      - name: Install and Build
         run: |
           npm install
           npm run build
-          npm run cypress:headless
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run dev
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 60
           
 
         

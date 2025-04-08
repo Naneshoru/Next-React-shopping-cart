@@ -22,7 +22,9 @@ Given('Im on the initial page', () => {
 });
 
 When('I click on the button', () => {
-  page.elements.button().should('exist').click();
+  page.elements.button().should('exist');
+
+  page.elements.button().click()
 });
 
 Then('I navigate to the data page', () => {
