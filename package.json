@@ -57,6 +57,23 @@
   },
   "overrides": {
     "@types/react": "19.0.7",
-    "@types/react-dom": "19.0.3"
+    "@types/react-dom": "19.0.3",
+    "@radix-ui/react-icons": {
+      "react": "19.0.0"
+    },
+    "@radix-ui/react-popper": {
+      "react": "19.0.0"
+    },
+    "@radix-ui/react-menu": {
+      "react": "19.0.0"
+    },
+    "framer-motion": {
+      "react": "19.0.0",
+      "react-dom": "19.0.0"
+    },
+    "next-themes": {
+      "react": "19.0.0",
+      "react-dom": "19.0.0"
+    }
   }
 }
