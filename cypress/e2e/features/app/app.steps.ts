@@ -13,6 +13,10 @@ class Page {
 
 const page = new Page();
 
+after(() => {
+  cy.clearAllLocalStorage()
+})
+
 Given('Im on the initial page', () => {
   cy.visit('/');
 });
