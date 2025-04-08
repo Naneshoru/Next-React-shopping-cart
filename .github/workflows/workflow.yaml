@@ -7,6 +7,8 @@ on:
 jobs:
   continous-integration:
     runs-on: ubuntu-latest
+    environment: PRODUCTION
+
     steps:
       - uses: actions/checkout@v3
       
@@ -34,5 +36,7 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: netlify deploy --prod --build --site=$NETLIFY_SITE_ID
+        run: |
+          echo "Deploying to Netlify..."
+          netlify deploy --prod --site=$NETLIFY_SITE_ID
         
