@@ -2,7 +2,11 @@
 
 import { withSentryConfig } from '@sentry/nextjs';
 
-const nextConfig = {}
+const nextConfig = {
+  experimental: {
+    appDir: true
+  }
+}
 
 export default withSentryConfig(nextConfig, {
   org: "ricardo-atakiama",
