@@ -1,11 +1,11 @@
 'use client'
 import { useEffect, useState } from 'react';
 
-export default function PostDetails({ params }: { params: { postId: string } }) {
+export default function PostDetails({ params }: { params: Promise<{ postId: string }> }) {
   const [postId, setPostId] = useState<string | null>(null);
 
   useEffect(() => {
-    // Simula a obtenção de parâmetros de forma assíncrona
+    // Simula a obtenï¿½ï¿½o de parï¿½metros de forma assï¿½ncrona
     async function fetchParams() {
       const resolvedParams = await params;
       setPostId(resolvedParams.postId);
